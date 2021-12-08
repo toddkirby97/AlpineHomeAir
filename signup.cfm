@@ -20,6 +20,8 @@
     <CFSET Session.Uname = FORM.Uname>
     <CFSET Session.SecLevel = 'basic'>
   </CFLOCK>
+  <!--- send to profile page --->
+  <CFLOCATION url="profile.cfm" addToken="no" />
 <CFELSEIF isDefined("FORM.cmd") AND FORM.cmd EQ "signup">
    <!--- if cmd is submitted and cmd is signup, do nothing, continue loading page --->
 <CFELSE>
@@ -29,19 +31,15 @@
 <!DOCTYPE html>
 <html>
   <body>
-    <CFIF isDefined("FORM.cmd") AND FORM.cmd EQ "signup">
       <!--- Enter user data --->
       <FORM action="signup.cfm" method="post">
         User Name:<INPUT type="text" name="Uname" id="Uname"/><BR/>
         First Name:<INPUT type="text" name="Uname" id="Uname"/><BR/>
         Last Name:<INPUT type="text" name="Uname" id="Uname"/><BR/>
         eMail:<INPUT type="text" name="Uname" id="Uname"/><BR/>
-        Password: <INPUT type="password" name="Pword" id="Pword"/>
+        Password: <INPUT type="password" name="Pword" id="Pword"/><BR/>
         <INPUT type="hidden" name="cmd" id="cmd" value="SaveSignup"/>
+        <INPUT type="submit" name="submit" id="submit" value="SAVE"/>
       </FORM>
-    <CFELSEIF isDefined("FORM.cmd") AND FORM.cmd EQ "SaveSignup">
-      <!--- Send to profile page --->
-      <CFLOCATION url="profile.cfm" addToken="no" />
-    </CFIF>
-  </body>
+   </body>
 </html>
