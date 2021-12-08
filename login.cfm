@@ -2,13 +2,9 @@
   <!--- do nothing, continue loading page --->
 <CFELSEIF isDefined('FORM.cmd') AND FORM.cmd EQ 'SaveLogin'>
   <CFQUERY name="Authenticate">
-    SELECT
-      PwordHash,
-      PwordSalt
-    FROM
-      Users
-    WHERE
-      Username = '<CFOUTPUT>#FORM.Uname#</CFOUTPUT>'
+    SELECT PwordHash, PwordSalt
+    FROM Users
+    WHERE Username = '<CFOUTPUT>#FORM.Uname#</CFOUTPUT>'
   </CFQUERY>
 
   <CFIF !Authenticate.recordCount>
@@ -17,8 +13,18 @@
   </CFIF>
 
   <CFIF Authenticate.PwordHash EQ hash(FORM.Pword & Authenticate.PwordSalt, "SHA-512")>
-    <!--- User is authenticated. Run whatever code is needed to establish a user session. --->
-    
+    <!--- User is authenticated --->
+	<CFQUERY name="sel_UserData">
+		SELECT Uname, SecLevel
+		FROM Users
+		WHERE Username = '<CFOUTPUT>#FORM.Uname#</CFOUTPUT>'
+	</CFQUERY>
+	<CFLOCK timeout=20 scope="Session" type="Exclusive">
+		<CFSET Session.Uname = sel_UserData.Uname>
+		<CFSET Session.SecLevel = sel_UserData.SecLevel>
+	</CFLOCK>
+	<!--- send to profile page --->
+	<CFLOCATION url="profile.cfm" addToken="no" />
   <CFELSE>
     <!--- User is not authenticated. Redirect them to the login page --->
     <CFLOCATION url="index.cfm" addtoken="no"/>
