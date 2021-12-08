@@ -3,7 +3,7 @@
  <!--- set the salt variable --->
  <CFSET passwordSalt = hash(generateSecretKey("AES"),"SHA-512")>
  <!--- insert the user data into the table --->
-  <CFQUERY name="ins_NewUser">
+ <CFQUERY name="ins_NewUser">
     INSERT INTO TblUsers (Uname, PwordHash, PwordSalt, SecLevel, FirstName, LastName, eMail)
     VALUES (
      '#FORM.Uname#',
@@ -40,7 +40,8 @@
         <INPUT type="hidden" name="cmd" id="cmd" value="SaveSignup"/>
       </FORM>
     <CFELSEIF isDefined("FORM.cmd") AND FORM.cmd EQ "SaveSignup">
-    
+      <!--- Send to profile page --->
+      <CFLOCATION url="profile.cfm" addToken="no" />
     </CFIF>
   </body>
 </html>
