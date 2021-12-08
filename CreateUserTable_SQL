@@ -1,0 +1,9 @@
+CREATE TABLE TblUsers (
+	Uname		varchar(30),
+	PwordHash	varchar(255),
+	PwordSalt	varchar(255),
+	SecLevel	varchar(30),
+	FirstName	varchar(30),
+	LastName	varchar(30),
+	eMail		varchar(255)
+);
