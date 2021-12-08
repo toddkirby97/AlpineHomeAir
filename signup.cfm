@@ -1,4 +1,13 @@
 <CFIF isDefined("FORM.cmd") AND FORM.cmd EQ "SaveSignup">
+ <CFSET passwordSalt = hash(generateSecretKey("AES"),"SHA-512")>
+
+  <CFQUERY name="ins_NewUser">
+    INSERT INTO Users
+    SET
+      passwordHash = <cfqueryparam cfsqltype="char" value="#hash(Password & passwordSalt,’SHA-512’)#">,
+      passwordSalt = <cfqueryparam cfsqltype="char" value="#passwordSalt#">
+    WHERE userID = <cfqueryparam cfsqltype="integer" value="#userID#">
+  </CFQUERY>
 
 
 <CFELSEIF isDefined("FORM.cmd") AND FORM.cmd EQ "signup">
