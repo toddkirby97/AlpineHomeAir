@@ -12,9 +12,9 @@
 <html>
 	<body>
     	<CFOUTPUT>
-			  	<TABLE>
-				  	<TR>
-						<TD>Username</TD>
+			  <TABLE>
+				  <TR>
+					<TD>Username</TD>
 						<TD>First Name</TD>
 						<TD>Last Name</TD>
 						<TD>eMail</TD>
@@ -29,7 +29,7 @@
 							<TD>#SecLevel#</TD>
 				  		</TR>
 					</CFLOOP>
-      			</TABLE>
+      		</TABLE>
     	</CFOUTPUT>
 	</body>
 </html>
