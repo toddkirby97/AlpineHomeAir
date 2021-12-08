@@ -12,23 +12,23 @@
 <html>
 	<body>
     	<CFOUTPUT>
-			  <TABLE>
-				  <TR>
-					<TD>Username</TD>
-						<TD>First Name</TD>
-						<TD>Last Name</TD>
-						<TD>eMail</TD>
-						<TD>Sec Level</TD>
-				  	</TR>
-					<CFLOOP query="sel_AllUsers">
-				  		<TR bgcolor="<CFIF currentrow MOD 2>LightGray<CFELSE>White</CFIF>">
-							<TD>#Uname#</TD>
-							<TD>#FirstName#</TD>
-							<TD>#LastName#</TD>
-							<TD>#eMail#</TD>
-							<TD>#SecLevel#</TD>
-				  		</TR>
-					</CFLOOP>
+	  	<TABLE>
+		  <TR>
+			<TD>Username</TD>
+				<TD>First Name</TD>
+				<TD>Last Name</TD>
+				<TD>eMail</TD>
+				<TD>Sec Level</TD>
+			</TR>
+			<CFLOOP query="sel_AllUsers">
+				<TR bgcolor="<CFIF currentrow MOD 2>LightGray<CFELSE>White</CFIF>">
+					<TD>#Uname#</TD>
+					<TD>#FirstName#</TD>
+					<TD>#LastName#</TD>
+					<TD>#eMail#</TD>
+					<TD>#SecLevel#</TD>
+				</TR>
+			</CFLOOP>
       		</TABLE>
     	</CFOUTPUT>
 	</body>
