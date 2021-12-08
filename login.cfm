@@ -18,8 +18,10 @@
 
   <CFIF Authenticate.PwordHash EQ hash(FORM.Pword & Authenticate.PwordSalt, "SHA-512")>
     <!--- User is authenticated. Run whatever code is needed to establish a user session. --->
+    
   <CFELSE>
     <!--- User is not authenticated. Redirect them to the login page --->
+    <CFLOCATION url="index.cfm" addtoken="no"/>
   </CFIF>
 <CFELSE>
   <!--- redirect --->
