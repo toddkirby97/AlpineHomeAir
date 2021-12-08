@@ -17,14 +17,13 @@
   </CFQUERY>
   <!--- start session --->
   <CFLOCK timeout=20 scope="Session" type="Exclusive">
-    <CFSET Session.user = FORM.Uname>
+    <CFSET Session.Uname = FORM.Uname>
     <CFSET Session.SecLevel = 'basic'>
   </CFLOCK>
-<!--- if cmd is submitted and cmd is signup --->
 <CFELSEIF isDefined("FORM.cmd") AND FORM.cmd EQ "signup">
-
-<!--- otherwise, redirect back to index --->
+   <!--- if cmd is submitted and cmd is signup, do nothing, continue loading page --->
 <CFELSE>
+  <!--- otherwise, redirect back to index --->
   <CFLOCATION url="index.cfm" addToken="no" />
 </CFIF>
 <!DOCTYPE html>
