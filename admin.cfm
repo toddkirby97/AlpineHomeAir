@@ -1,8 +1,8 @@
 <CFIF isDefined('Session.Uname') AND Session.Uname NEQ '' AND isDefined('sel_UserData.SecLevel') AND sel_UserData.SecLevel EQ 'admin'>
-  	<!--- user is admin, get all users for table --->
+	<!--- user is admin, get all users for table --->
   	<CFQUERY name="sel_AllUsers">
-    	SELECT Uname, SecLevel, FirstName, LastName, eMail
-    	FROM TblUsers
+    		SELECT Uname, SecLevel, FirstName, LastName, eMail
+    		FROM TblUsers
   	</CFQUERY>
 <CFELSE>
   	<!--- not admin, redirect --->
@@ -10,11 +10,11 @@
 </CFIF>
 <!DOCTYPE html>
 <html>
-	<body>
+<body>
     	<CFOUTPUT>
 	  	<TABLE>
-		  <TR>
-			<TD>Username</TD>
+		  	<TR>
+				<TD>Username</TD>
 				<TD>First Name</TD>
 				<TD>Last Name</TD>
 				<TD>eMail</TD>
@@ -31,5 +31,6 @@
 			</CFLOOP>
       		</TABLE>
     	</CFOUTPUT>
-	</body>
+</body>
 </html>
+
